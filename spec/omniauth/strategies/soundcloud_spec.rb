@@ -36,24 +36,4 @@ describe OmniAuth::Strategies::SoundCloud do
       subject.callback_path.should eq('/auth/soundcloud/callback')
     end
   end
-
-   describe '#authorize_params' do
-    it 'includes display parameter from request when present' do
-      request.stub(:params) { { 'display' => 'touch' } }
-      subject.authorize_params.should be_a(Hash)
-      subject.authorize_params[:display].should eq('touch')
-    end
-
-    it 'includes state parameter from request when present' do
-      request.stub(:params) { { 'state' => 'some_state' } }
-      subject.authorize_params.should be_a(Hash)
-      subject.authorize_params[:state].should eq('some_state')
-    end
-
-    it 'overrides default scope with parameter passed from request' do
-      request.stub(:params) { { 'scope' => 'email' } }
-      subject.authorize_params.should be_a(Hash)
-      subject.authorize_params[:scope].should eq('email')
-    end
-   end
 end
