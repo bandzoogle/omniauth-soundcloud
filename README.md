@@ -15,7 +15,13 @@ Then `bundle install`.
 ## Basic Usage
 
     use OmniAuth::Builder do
-    	provider "soundcloud", ENV['SOUNDCLOUD_CLIENT_ID'], ENV['SOUNDCLOUD_SECRET']
+    	provider 'soundcloud',
+        ENV['SOUNDCLOUD_CLIENT_ID'],
+        ENV['SOUNDCLOUD_SECRET'],
+        pkce: true,
+        scope: '',
+        response_type: 'code',
+        redirect_uri: ENV['SOUNDCLOUD_REDIRECT_URI']
     end
 
 ## Supported Flows
